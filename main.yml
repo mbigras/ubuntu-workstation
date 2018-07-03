@@ -17,5 +17,11 @@
     - name: copy oauth token
       copy: src="hub" dest="{{ ansible_env.HOME }}/.config"
 
+    - name: ensure ssh directory exists
+      file: path="{{ ansible_env.HOME }}/.ssh" state=directory
+
+    - name: copy ssh key
+      copy: src="id_rsa" dest="{{ ansible_env.HOME }}/.ssh" mode=0600
+
     - name: copy git configuration
       copy: src=".gitconfig" dest="{{ ansible_env.HOME }}"
