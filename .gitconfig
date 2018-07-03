@@ -1,0 +1,10 @@
+[user]
+	email = mbigras22@gmail.com
+	name = Max Bigras
+[alias]
+	lol = log --graph --pretty=oneline --abbrev-commit --decorate --all
+	s = status
+[github]
+	user = mbigras
+[ghi]
+	token = !security find-internet-password -a mbigras -s github.com -l 'ghi token' -w

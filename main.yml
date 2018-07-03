@@ -1,0 +1,21 @@
+- hosts: all
+  tasks:
+    - name: print somthing
+      debug: msg="hello world!"
+
+    - name: add hub personal package archive (ppa)
+      apt_repository: repo="ppa:cpick/hub"
+      become: yes
+
+    - name: install hub cli
+      apt: name="hub"
+      become: yes
+
+    - name: ensure config directory exists
+      file: path="{{ ansible_env.HOME }}/.config" state=directory
+
+    - name: copy oauth token
+      copy: src="hub" dest="{{ ansible_env.HOME }}/.config"
+
+    - name: copy git configuration
+      copy: src=".gitconfig" dest="{{ ansible_env.HOME }}"
